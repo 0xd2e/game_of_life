@@ -12,9 +12,9 @@ def init_world(pattern=0):
 
     pattern -- integer, pattern number
             -- constants: 1
-            -- oscillators: 2, 3
+            -- oscillators: 2, 3, 11
             -- moving patterns: 4
-            -- othe patterns: 5, 6, 7, 8, 9
+            -- othe patterns: 5, 6, 7, 8, 9, 10
             -- the default pattern
 
 
@@ -166,6 +166,37 @@ def init_world(pattern=0):
 
         world[:, 16] = 0
         world[15, :] = 0
+
+    elif pattern == 10:
+
+        world = np.zeros(world_size, dtype=integer)
+
+        # Checkerboard
+        world[0::2, 0::2] = 1
+        world[1::2, 1::2] = 1
+
+    elif pattern == 11:
+
+        # Another oscillator pattern
+        world = np.zeros((17, 17), dtype=integer)
+
+        # Pulsar
+        world[2, 4:7] = 1
+        world[2, 10:13] = 1
+        world[7, 4:7] = 1
+        world[7, 10:13] = 1
+        world[9, 4:7] = 1
+        world[9, 10:13] = 1
+        world[14, 4:7] = 1
+        world[14, 10:13] = 1
+        world[4:7, 2] = 1
+        world[10:13, 2] = 1
+        world[4:7, 7] = 1
+        world[10:13, 7] = 1
+        world[4:7, 9] = 1
+        world[10:13, 9] = 1
+        world[4:7, 14] = 1
+        world[10:13, 14] = 1
 
     else:
 
