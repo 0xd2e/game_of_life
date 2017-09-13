@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-"""Collection of simple pattern for onway's Game of Life"""
+"""Collection of simple pattern for Conway's Game of Life"""
 
 
 import numpy as np
@@ -14,11 +14,11 @@ def init_world(pattern=0):
             -- constants: 1
             -- oscillators: 2, 3
             -- moving patterns: 4
-            -- othe patterns: 5, 6, 7, 8, 9,
-               and the default pattern
+            -- othe patterns: 5, 6, 7, 8, 9
+            -- the default pattern
 
 
-    Initial patterns for Conway's game of life.
+    Collection of initial patterns for Conway's game of life..
 
 
     Returns 2D numpy array of integers
