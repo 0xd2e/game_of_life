@@ -11,7 +11,7 @@ from matplotlib.animation import FuncAnimation
 import seaborn as sns
 
 
-def update(iframe, world, neighborhood, show_iter, plot_options):
+def update(iframe, world, neighborhood, plot_options):
     """
     Inputs:
 
@@ -21,8 +21,6 @@ def update(iframe, world, neighborhood, show_iter, plot_options):
 
     neighborhood -- 3x3 numpy array of booleans, matrix defining
                     surroundings of a cell (Moore neighborhood)
-
-    show_iter -- boolean, show iteration counter if True
 
     plot_options -- dictionary with valid matplotlib plot parameters
 
@@ -51,13 +49,10 @@ def update(iframe, world, neighborhood, show_iter, plot_options):
     # Clear the figure before drawing on it
     plt.clf()
 
-    if show_iter:
-        plt.title('Iteration: {}'.format(iframe))
-
     sns.heatmap(world, **plot_options)
 
 
-def play(world=None, step_number=0, show_iter=False, step_time=300):
+def play(world=None, step_number=0, step_time=300):
     """
     Inputs:
 
@@ -68,8 +63,6 @@ def play(world=None, step_number=0, show_iter=False, step_time=300):
     step_number -- number of iterations of the animation
                 -- if positive integer number, updates world a given number of times
                 -- in other cases creates an infinite animation loop (default)
-
-    show_iter -- boolean, show iteration counter if True
 
     step_time -- positive integer number, delay between animation frames
                  in milliseconds
@@ -119,7 +112,7 @@ def play(world=None, step_number=0, show_iter=False, step_time=300):
                           frames=step_number,
                           interval=step_time,
                           init_func=lambda: sns.heatmap(world, **plot_options),
-                          fargs=(world, neighborhood, show_iter, plot_options),
+                          fargs=(world, neighborhood, plot_options),
                           repeat=False,
                           blit=False)
 
