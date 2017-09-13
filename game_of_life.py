@@ -4,11 +4,11 @@
 
 
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from matplotlib.animation import FuncAnimation
 from scipy.ndimage import convolve
+
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+import seaborn as sns
 
 
 def update(iframe, world, neighborhood, show_iter, plot_options):
@@ -104,20 +104,24 @@ def play(world=None, step_number=0, show_iter=False, step_time=300):
                              [1, 0, 1],
                              [1, 1, 1]], dtype=np.bool)
 
-    if (type(step_number) is not int) or (step_number < 1):
+    if not isinstance(step_number, int) or step_number < 1:
         step_number = None
 
     if not (isinstance(world, np.ndarray) and
-            (len(world.shape) == 2) and
+            len(world.shape) == 2 and
             issubclass(world.dtype.type, np.integer) and
-            (np.max(world) == 1) and
-            (np.min(world) == 0)):
+            np.max(world) == 1 and
+            np.min(world) == 0):
         world = np.random.randint(2, size=(30, 50), dtype=np.uint16)
 
-    anime = FuncAnimation(fig, update, frames=step_number, interval=step_time,
+    anime = FuncAnimation(fig,
+                          update,
+                          frames=step_number,
+                          interval=step_time,
                           init_func=lambda: sns.heatmap(world, **plot_options),
                           fargs=(world, neighborhood, show_iter, plot_options),
-                          repeat=False, blit=False)
+                          repeat=False,
+                          blit=False)
 
     plt.show()
 
