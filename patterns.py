@@ -22,7 +22,7 @@ def init_world(pattern=0):
 
 
     Returns 2D numpy array of integers
-    with pattern consists of ones and zeros.
+    with pattern of ones and zeros.
     """
 
     integer = np.uint16

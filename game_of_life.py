@@ -37,7 +37,7 @@ def update(iframe, world, neighborhood, plot_options):
     ** otherwise mark the cell as dead
 
 
-    This fuction does not return any value.
+    This function does not return any value.
     """
 
     # Count alive cells in the neighborhood of each cell
@@ -71,7 +71,7 @@ def play(world=None, step_number=0, step_time=300):
     Displays animated plot.
 
 
-    This fuction does not return any value.
+    This function does not return any value.
     """
 
     fig = plt.figure(num="Conway's Game of Life", facecolor='white')
